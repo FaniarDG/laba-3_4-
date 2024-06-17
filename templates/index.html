@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4 fw-normal text-body-emphasis">Тригонометрические функции</h1>
+        <form method="post">
+            <label for="grad">Угол</label>
+            <input type="number" id="grad" name="grad" step="any" value="{{ request.form.grad if request.form.grad }}" required>
+
+            <label for="precision">Точность</label>
+            <input type="number" id="precision" name="precision" value="{{ request.form.precision if request.form.precision }}" required>
+
+            <label for="units">Единицы измерения</label>
+            <select id="units" name="units" required>
+                <option value=""></option>
+                <option value="degrees" {% if request.form.units == 'degrees' %}selected{% endif %}>Градусы</option>
+                <option value="radians" {% if request.form.units == 'radians' %}selected{% endif %}>Радианы</option>
+            </select>
+
+            <fieldset>
+                <legend>Выберите функции</legend>
+                <label><input type="checkbox" name="functions" value="sin" {% if 'sin' in request.form.getlist('functions') %}checked{% endif %}> Sin</label>
+                <label><input type="checkbox" name="functions" value="cos" {% if 'cos' in request.form.getlist('functions') %}checked{% endif %}> Cos</label>
+                <label><input type="checkbox" name="functions" value="tg" {% if 'tg' in request.form.getlist('functions') %}checked{% endif %}> Tg</label>
+                <label><input type="checkbox" name="functions" value="ctg" {% if 'ctg' in request.form.getlist('functions') %}checked{% endif %}> Ctg</label>
+            </fieldset>
+
+            <button type="submit">Вычислить</button>
+        </form>
+
+        {% if result %}
+        <div class="table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th style="width: 34%;"></th>
+                        {% if 'cos' in selected_functions %}<th style="width: 22%;">Cos</th>{% endif %}
+                        {% if 'sin' in selected_functions %}<th style="width: 22%;">Sin</th>{% endif %}
+                        {% if 'tg' in selected_functions %}<th style="width: 22%;">Tg</th>{% endif %}
+                        {% if 'ctg' in selected_functions %}<th style="width: 22%;">Ctg</th>{% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" class="text-start">Результат</th>
+                        {% if 'cos' in selected_functions %}<td>{{ result.cos }}</td>{% endif %}
+                        {% if 'sin' in selected_functions %}<td>{{ result.sin }}</td>{% endif %}
+                        {% if 'tg' in selected_functions %}<td>{{ result.tg }}</td>{% endif %}
+                        {% if 'ctg' in selected_functions %}<td>{{ result.ctg }}</td>{% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
