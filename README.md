@@ -6,4 +6,5 @@
 ![image](https://github.com/FaniarDG/laba-3_4-/assets/163538624/c239e39c-1459-4675-907b-b00810a80f8f)
 ![image](https://github.com/FaniarDG/laba-3_4-/assets/163538624/f630a6a0-6aea-4a28-941c-9788bbc000e9)
 ![image](https://github.com/FaniarDG/laba-3_4-/assets/163538624/610a2c25-e502-4916-8b69-d2428f680ab9)
+![image](https://github.com/FaniarDG/laba-3_4-/assets/163538624/9bf436e8-b3bb-416d-bd47-975a2d350085)
 
